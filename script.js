@@ -19,7 +19,14 @@ addBookToLibrary("theHobbit","Tolkien",362);
 addBookToLibrary("rise","and shine","222")
 
 function displayBooks(array){
+  let cardContainer = document.getElementById('card-container')
+  console.log(cardContainer)
     for (let i = 0 ; i < myLibrary.length ; i++){
-       console.log(array[i]); 
+      let card = document.createElement('div')
+      card.classList.add('card')
+      console.log(card);
+      cardContainer.appendChild(card)
     }
 }
+
+displayBooks(myLibrary)
