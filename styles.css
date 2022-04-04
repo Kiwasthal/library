@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 8vh 86vh 6vh;
+}
+
+.header {
+    background-color: rgb(119, 97, 97);
+    font-size: clamp(2.5vh,2.5vh,2.5vh);
+    letter-spacing: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:  1vw;
+    font-size: clamp(2.5vh,2.5vh,2.5vh);
+    background-color: rgb(119, 97, 97);
+    color: #ddd;
+}
+
+img {
+    height: 4vh;
+    transition: 600ms;
+}
+
+img:hover {
+    transform: rotate(720deg)  scale(1.1);
+
+}

@@ -1,3 +1,6 @@
+
+let myLibrary = []
+
 function CreateBook(title,author,pages){
     this.title = title
     this.author = author
@@ -7,6 +10,10 @@ function CreateBook(title,author,pages){
     }
 }
 
-const book = new CreateBook("Hobbit","J.R.Tolkien","252")
+function addBookToLibrary(title,author,pages) {
+    const myBook = new CreateBook(title,author,pages)
+    return myLibrary.push(myBook)
+}
 
-console.log(book.info());
+addBookToLibrary("theHobbit","Tolkien",362);
+addBookToLibrary("rise","and shine","222")
