@@ -17,3 +17,9 @@ function addBookToLibrary(title,author,pages) {
 
 addBookToLibrary("theHobbit","Tolkien",362);
 addBookToLibrary("rise","and shine","222")
+
+function displayBooks(array){
+    for (let i = 0 ; i < myLibrary.length ; i++){
+       console.log(array[i]); 
+    }
+}
