@@ -73,10 +73,17 @@ body {
     font-size: 2vh;
     width: 5vw;
     align-self: flex-end;
+    border-radius: 1vh;
+    color: rgba(37, 32, 32, 0.6);
+}
+
+.card button:nth-child(4):hover {
+    color: rgba(37, 32, 32, 1);
 }
 
 
 .card button:nth-child(5){
+    height: 4vh;
     background-color: rgb(172, 64, 64);
     color: rgba(37, 32, 32, 0.6);
     justify-self: end;
@@ -84,6 +91,7 @@ body {
     width: 3vw;
     align-self: flex-end;
     font-weight: bolder;
+    border-radius: 1vh;
 }
 
 .card button:nth-child(5):hover{

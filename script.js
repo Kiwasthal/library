@@ -14,18 +14,16 @@ function CreateBook(title,author,pages){
     }
 }
 
-function addBookToLibrary(title,author,pages,read) {
-    const myBook = new CreateBook(title,author,pages,read);
+function addBookToLibrary(title,author,pages) {
+    const myBook = new CreateBook(title,author,pages);
     myLibrary.push(myBook);
-    return myLibrary
 }
+
 
 function displayBooks(array){
   let cardContainer = document.getElementById('card-container')
-    // for (let i = 0 ; i < myLibrary.length ; i++){
-
       let card = document.createElement('div');
-
+      
       let cardTitle = document.createElement('div');
       cardTitle.textContent = `Title: ${array[i].title}`;
       card.appendChild(cardTitle);
@@ -41,9 +39,9 @@ function displayBooks(array){
       let btnRead = document.createElement('button');
       btnRead.textContent = array[i].read
       btnRead.addEventListener('click', function(){
-          array[i].toggleRead()
-          btnRead.textContent = array[i].read
+          btnRead.textContent === "Read"? btnRead.textContent = "Not Read" : btnRead.textContent = "Read"
       })
+
       card.appendChild(btnRead)
 
       //Remove listener 
