@@ -83,7 +83,8 @@ body {
 
 
 .card button:nth-child(5){
-    height: 4vh;
+    height: 3vh;
+    width: 2vw;
     background-color: rgb(172, 64, 64);
     color: rgba(37, 32, 32, 0.6);
     justify-self: end;
@@ -92,6 +93,7 @@ body {
     align-self: flex-end;
     font-weight: bolder;
     border-radius: 1vh;
+    justify-self: end;
 }
 
 .card button:nth-child(5):hover{
