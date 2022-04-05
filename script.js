@@ -38,8 +38,10 @@ function displayBooks(array){
 
       let btnRead = document.createElement('button');
       btnRead.textContent = array[i].read
+
       btnRead.addEventListener('click', function(){
-          btnRead.textContent === "Read"? btnRead.textContent = "Not Read" : btnRead.textContent = "Read"
+          array[i-1].toggleRead()
+          btnRead.textContent = array[i-1].read
       })
 
       card.appendChild(btnRead)
@@ -82,3 +84,4 @@ document.getElementById('create-book').addEventListener('click', function(){
     document.getElementById('book-author').value = ""
     document.getElementById('book-pages').value = ""
 })
+
