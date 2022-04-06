@@ -8,9 +8,9 @@ function CreateBook(title,author,pages){
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = "Read";
+    this.read = true;
     this.toggleRead = function(){
-        this.read === "Read" ? this.read = "Not Read" : this.read = "Read";
+        this.read ? this.read = false : this.read = true ;
     }
 }
 
