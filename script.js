@@ -37,10 +37,12 @@ function displayBooks(array){
       card.appendChild(cardPages);
 
       let btnRead = document.createElement('button');
-      btnRead.textContent = array[i].read
+      btnRead.dataset.index = i;
+      array[i].read ? btnRead.textContent = "Read" : btnRead.textContent = "Not Read";
+    
       btnRead.addEventListener('click', function(){
-          array[i-1].toggleRead();
-          btnRead.textContent = array[i-1].read;
+          array[btnRead.dataset.index].toggleRead();
+          array[btnRead.dataset.index].read ? btnRead.textContent = "Read" : btnRead.textContent = "Not Read";
       })
 
       card.appendChild(btnRead);
