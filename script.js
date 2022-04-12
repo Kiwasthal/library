@@ -1,16 +1,18 @@
+const myLibrary = (() => {
 
 let myLibrary = [];
 let i=0;
-let container = document.querySelector('.container');
-let cardContainer = document.getElementById('card-container');
 
-function CreateBook(title,author,pages){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = true;
-    this.toggleRead = function(){
-        this.read ? this.read = false : this.read = true;
+class CreateBook {
+    constructor(title,author,pages){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = true;
+
+        this.toggleRead = function(){
+            this.read ? this.read = false : this.read = true;
+        }
     }
 }
 
@@ -48,8 +50,6 @@ function displayBooks(array){
 
       card.appendChild(btnRead);
 
-      //Remove listener 
-
       let btnDelete = document.createElement('button');
       btnDelete.addEventListener('click',function(){
           cardContainer.removeChild(card);
@@ -64,8 +64,6 @@ function displayBooks(array){
 }
 
 let addBtn = document.getElementById('add-book');
-
-//Create form with button press
 
 addBtn.addEventListener('click', function(){
     document.querySelector('.bg-modal').style.display ='flex';
@@ -87,3 +85,4 @@ document.getElementById('create-book').addEventListener('click', function(){
     document.getElementById('book-pages').value = "";
 })
 
+})();
