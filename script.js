@@ -1,88 +1,101 @@
 const myLibrary = (() => {
+  let myLibrary = [];
+  let i = 0;
 
-let myLibrary = [];
-let i=0;
+  class CreateBook {
+    constructor(title, author, pages) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.read = true;
 
-class CreateBook {
-    constructor(title,author,pages){
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = true;
-
-        this.toggleRead = function(){
-            this.read ? this.read = false : this.read = true;
-        }
+      this.toggleRead = function () {
+        this.read ? (this.read = false) : (this.read = true);
+      };
     }
-}
+  }
 
-function addBookToLibrary(title,author,pages) {
-
-    const myBook = new CreateBook(title,author,pages);
+  function addBookToLibrary(title, author, pages) {
+    const myBook = new CreateBook(title, author, pages);
     myLibrary.push(myBook);
-}
+  }
 
+  function displayBooks(array) {
+    let cardContainer = document.getElementById('card-container');
+    let card = document.createElement('div');
 
-function displayBooks(array){
-  let cardContainer = document.getElementById('card-container');
-      let card = document.createElement('div');
-      
-      let cardTitle = document.createElement('div');
-      cardTitle.textContent = `Title: ${array[i].title}`;
-      card.appendChild(cardTitle);
+    let cardTitle = document.createElement('div');
+    cardTitle.textContent = `Title: ${array[i].title}`;
+    card.appendChild(cardTitle);
 
-      let cardAuthor = document.createElement('div');
-      cardAuthor.textContent = `Author:  ${array[i].author}`;
-      card.appendChild(cardAuthor);
-      
-      let cardPages = document.createElement('div');
-      cardPages.textContent = `Pages: ${array[i].pages}`;
-      card.appendChild(cardPages);
+    let cardAuthor = document.createElement('div');
+    cardAuthor.textContent = `Author:  ${array[i].author}`;
+    card.appendChild(cardAuthor);
 
-      let btnRead = document.createElement('button');
-      btnRead.dataset.index = i;
-      array[i].read ? btnRead.textContent = "Read" : btnRead.textContent = "Not Read";
+    let cardPages = document.createElement('div');
+    cardPages.textContent = `Pages: ${array[i].pages}`;
+    card.appendChild(cardPages);
 
-      btnRead.addEventListener('click', function(){
-        array[btnRead.dataset.index].toggleRead();
-        array[btnRead.dataset.index].read ? btnRead.textContent = "Read" : btnRead.textContent = "Not Read";
-      })
+    let btnRead = document.createElement('button');
+    btnRead.dataset.index = i;
+    array[i].read
+      ? (btnRead.textContent = 'Read')
+      : (btnRead.textContent = 'Not Read');
 
-      card.appendChild(btnRead);
+    btnRead.addEventListener('click', function () {
+      array[btnRead.dataset.index].toggleRead();
+      array[btnRead.dataset.index].read
+        ? (btnRead.textContent = 'Read')
+        : (btnRead.textContent = 'Not Read');
+    });
 
-      let btnDelete = document.createElement('button');
-      btnDelete.addEventListener('click',function(){
-          cardContainer.removeChild(card);
-      })
+    card.appendChild(btnRead);
 
-      btnDelete.classList.add('delete');
-      btnDelete.textContent = "X";
-      card.appendChild(btnDelete);
-        
-      card.classList.add('card');
-      cardContainer.appendChild(card);
-}
+    let btnDelete = document.createElement('button');
+    btnDelete.addEventListener('click', function () {
+      cardContainer.removeChild(card);
+    });
 
-let addBtn = document.getElementById('add-book');
+    btnDelete.classList.add('delete');
+    btnDelete.textContent = 'X';
+    card.appendChild(btnDelete);
 
-addBtn.addEventListener('click', function(){
-    document.querySelector('.bg-modal').style.display ='flex';
-});
+    card.classList.add('card');
+    cardContainer.appendChild(card);
+  }
 
-document.querySelector('.close').addEventListener('click',function(){
-    document.querySelector('.bg-modal').style.display ='none';
-})
+  let addBtn = document.getElementById('add-book');
 
-document.getElementById('create-book').addEventListener('click', function(){
-    addBookToLibrary(document.getElementById('book-title').value,
-                        document.getElementById('book-author').value,
-                            document.getElementById('book-pages').value);
-    displayBooks(myLibrary);
-    ++i;
-    document.querySelector('.bg-modal').style.display ='none';
-    document.getElementById('book-title').value = "";
-    document.getElementById('book-author').value = "";
-    document.getElementById('book-pages').value = "";
-})
+  addBtn.addEventListener('click', function () {
+    document.querySelector('.bg-modal').style.display = 'flex';
+  });
 
+  document.querySelector('.close').addEventListener('click', function () {
+    document.querySelector('.bg-modal').style.display = 'none';
+  });
+
+  document.getElementById('create-book').addEventListener('click', function () {
+    let errorDisplay = document.querySelector('.errormsg');
+    if (
+      document.getElementById('book-title').validity.valueMissing ||
+      document.getElementById('book-author').validity.valueMissing ||
+      document.getElementById('book-pages').validity.valueMissing
+    ) {
+      errorDisplay.textContent = 'Please fill out all the fields';
+    } else {
+      addBookToLibrary(
+        document.getElementById('book-title').value,
+        document.getElementById('book-author').value,
+        document.getElementById('book-pages').value
+      );
+      displayBooks(myLibrary);
+      ++i;
+      document.querySelector('.bg-modal').style.display = 'none';
+      document.getElementById('book-title').value = '';
+      document.getElementById('book-author').value = '';
+      document.getElementById('book-pages').value = '';
+    }
+  });
 })();
+
+console.log();
