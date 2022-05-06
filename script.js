@@ -97,5 +97,3 @@ const myLibrary = (() => {
     }
   });
 })();
-
-console.log();
